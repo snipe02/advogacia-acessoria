@@ -1,0 +1,23 @@
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.modal-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.95);
+}
+
+.modal-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
