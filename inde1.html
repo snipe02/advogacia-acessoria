@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Cliente | Lucas Faustino Advocacia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { navy: "#0A1F44", gold: "#C59B56", lightGray: "#F8F9FA" },
+            fontFamily: {
+              serif: ['"Playfair Display"', "serif"],
+              sans: ['"Inter"', "sans-serif"],
+            },
+            animation: { "fade-in-up": "fadeInUp .8s ease-out forwards" },
+            keyframes: {
+              fadeInUp: {
+                "0%": { opacity: "0", transform: "translateY(20px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .delay-100 {
+        animation-delay: 100ms;
+      }
+      .delay-200 {
+        animation-delay: 200ms;
+      }
+      .delay-300 {
+        animation-delay: 300ms;
+      }
+      .modal-hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0.95);
+      }
+      .modal-visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scale(1);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-lightGray text-navy font-sans min-h-screen flex flex-col justify-between"
+  >
+    <nav
+      class="w-full bg-white shadow-sm py-4 px-6 md:px-12 flex justify-between items-center"
+    >
+      <div class="flex items-center space-x-3">
+        <div
+          class="border-2 border-navy w-10 h-10 flex items-center justify-center relative overflow-hidden"
+        >
+          <span class="font-serif text-xl font-bold text-gold z-10">L</span>
+          <span
+            class="font-serif text-lg font-bold text-navy absolute right-1 bottom-0"
+            >F</span
+          >
+        </div>
+        <div class="hidden md:block">
+          <h1 class="font-serif font-bold text-lg tracking-wider leading-tight">
+            LUCAS FAUSTINO
+          </h1>
+          <p class="text-[0.65rem] text-gold tracking-widest font-medium">
+            ADVOCACIA E ASSESSORIA
+          </p>
+        </div>
+      </div>
+      <a
+        href="admin.html"
+        class="text-sm font-medium text-gray-500 hover:text-gold transition-colors"
+      >
+        <i class="fa-solid fa-lock mr-1"></i> Área Segura
+      </a>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center p-4 md:p-8">
+      <div
+        class="rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row w-full max-w-5xl border border-gray-100 opacity-0 animate-fade-in-up bg-white"
+      >
+        <!-- Coluna esquerda -->
+        <div
+          class="md:w-5/12 bg-navy text-white p-8 md:p-12 flex flex-col justify-between relative"
+        >
+          <div class="absolute top-0 right-0 w-24 h-1 bg-gold"></div>
+          <div>
+            <div class="flex items-center gap-5 mb-8">
+              <div
+                class="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-gold/60 overflow-hidden shadow-2xl flex-shrink-0 bg-white"
+              >
+                <img
+                  src="perfil.jpeg"
+                  alt="Dr. Lucas Faustino"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div>
+                <h3 class="font-serif font-bold text-xl md:text-2xl">
+                  Dr. Lucas Faustino
+                </h3>
+                <p
+                  class="text-gold text-xs md:text-sm tracking-widest uppercase mt-1"
+                >
+                  Advocacia e Assessoria
+                </p>
+              </div>
+            </div>
+            <h2
+              class="font-serif text-3xl md:text-4xl font-bold mb-4 leading-tight"
+            >
+              Área do <br /><span class="text-gold">Cliente</span>
+            </h2>
+            <p class="text-gray-300 mb-8 text-sm leading-relaxed">
+              Preencha seus dados para agilizar seu atendimento. Nossa equipe é
+              especializada em Direito Previdenciário.
+            </p>
+            <ul class="space-y-4 text-sm text-gray-200">
+              <li class="flex items-start">
+                <i
+                  class="fa-solid fa-circle-check text-gold mt-1 mr-3 text-lg"
+                ></i
+                ><span
+                  >Aposentadorias por idade, tempo de contribuição e rural</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i
+                  class="fa-solid fa-circle-check text-gold mt-1 mr-3 text-lg"
+                ></i
+                ><span
+                  >Auxílio-doença e auxílio-acidente negados pelo INSS</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i
+                  class="fa-solid fa-circle-check text-gold mt-1 mr-3 text-lg"
+                ></i
+                ><span>BPC/LOAS para idoso e pessoa com deficiência</span>
+              </li>
+              <li class="flex items-start">
+                <i
+                  class="fa-solid fa-circle-check text-gold mt-1 mr-3 text-lg"
+                ></i
+                ><span>Pensão por morte para cônjuge e filhos</span>
+              </li>
+              <li class="flex items-start">
+                <i
+                  class="fa-solid fa-circle-check text-gold mt-1 mr-3 text-lg"
+                ></i
+                ><span
+                  >Revisão de benefícios e planejamento previdenciário</span
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="mt-12 pt-6 border-t border-gray-700/50 space-y-3">
+            <p
+              class="text-xs text-gray-400 uppercase tracking-wider font-semibold"
+            >
+              Contato Direto
+            </p>
+            <a
+              href="https://wa.me/558694622189"
+              target="_blank"
+              class="flex items-center text-gray-200 hover:text-gold transition"
+            >
+              <i class="fa-brands fa-whatsapp text-gold text-lg mr-3"></i
+              ><span class="font-medium text-sm">+55 86 9462-2189</span>
+            </a>
+            <a
+              href="https://instagram.com/lucasfaustino.adv"
+              target="_blank"
+              class="flex items-center text-gray-200 hover:text-gold transition"
+            >
+              <i class="fa-brands fa-instagram text-gold text-lg mr-3"></i
+              ><span class="font-medium text-sm">@lucasfaustino.adv</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coluna direita (formulário) -->
+        <div class="md:w-7/12 p-8 md:p-12 bg-white">
+          <div class="flex justify-center mb-8">
+            <div
+              class="w-28 h-28 md:w-32 md:h-32 rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-white p-1"
+            >
+              <img
+                src="logo.jpeg"
+                alt="Logo Lucas Faustino"
+                class="w-full h-full object-cover rounded-xl"
+              />
+            </div>
+          </div>
+          <h3 class="text-2xl font-serif font-bold mb-2 text-center">
+            Cadastro de Cliente
+          </h3>
+          <p class="text-gray-500 text-sm mb-4 text-center">
+            Todos os dados estão protegidos e são de uso exclusivo do
+            escritório.
+          </p>
+
+          <div id="status" class="text-center text-xs mb-6 text-gray-400">
+            <i class="fa-solid fa-circle-notch fa-spin mr-1"></i> Conectando ao
+            servidor...
+          </div>
+
+          <form id="clientForm" class="space-y-6" novalidate>
+            <div class="opacity-0 animate-fade-in-up delay-100">
+              <label
+                for="nome"
+                class="block text-sm font-semibold text-gray-700 mb-2"
+                >Nome Completo</label
+              >
+              <div class="relative group">
+                <i
+                  class="fa-regular fa-user text-gray-400 group-focus-within:text-gold absolute left-4 top-1/2 -translate-y-1/2"
+                ></i>
+                <input
+                  type="text"
+                  id="nome"
+                  name="nome"
+                  required
+                  autocomplete="name"
+                  placeholder="Digite seu nome completo"
+                  class="w-full pl-11 pr-4 py-3.5 rounded-lg border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none bg-gray-50 focus:bg-white text-sm"
+                />
+              </div>
+            </div>
+            <div class="opacity-0 animate-fade-in-up delay-200">
+              <label
+                for="telefone"
+                class="block text-sm font-semibold text-gray-700 mb-2"
+                >Telefone / WhatsApp</label
+              >
+              <div class="relative group">
+                <i
+                  class="fa-solid fa-phone text-gray-400 group-focus-within:text-gold absolute left-4 top-1/2 -translate-y-1/2"
+                ></i>
+                <input
+                  type="tel"
+                  id="telefone"
+                  name="telefone"
+                  required
+                  autocomplete="tel"
+                  placeholder="(86) 99999-9999"
+                  class="w-full pl-11 pr-4 py-3.5 rounded-lg border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none bg-gray-50 focus:bg-white text-sm"
+                />
+              </div>
+            </div>
+            <div class="opacity-0 animate-fade-in-up delay-300">
+              <label
+                for="endereco"
+                class="block text-sm font-semibold text-gray-700 mb-2"
+                >Endereço Completo</label
+              >
+              <div class="relative group">
+                <i
+                  class="fa-solid fa-location-dot text-gray-400 group-focus-within:text-gold absolute left-4 top-4"
+                ></i>
+                <textarea
+                  id="endereco"
+                  name="endereco"
+                  rows="3"
+                  required
+                  autocomplete="street-address"
+                  placeholder="Rua, Número, Bairro, Cidade - Estado, CEP"
+                  class="w-full pl-11 pr-4 py-3.5 rounded-lg border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none bg-gray-50 focus:bg-white text-sm resize-none"
+                ></textarea>
+              </div>
+            </div>
+
+            <div
+              id="erro"
+              class="hidden text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg p-3"
+            >
+              <p id="erroMsg"></p>
+              <a
+                id="whatsFallback"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                class="mt-3 inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-lg text-xs"
+              >
+                <i class="fa-brands fa-whatsapp"></i> Enviar pelo WhatsApp agora
+              </a>
+            </div>
+
+            <div class="pt-2 opacity-0 animate-fade-in-up delay-300">
+              <button
+                type="submit"
+                id="btnEnviar"
+                class="w-full bg-navy hover:bg-gold text-white font-bold py-4 rounded-lg shadow-lg transition-all duration-300 flex justify-center items-center disabled:opacity-60"
+              >
+                <span id="btnTexto">Enviar Cadastro</span
+                ><i class="fa-solid fa-paper-plane ml-3"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal de sucesso -->
+    <div
+      id="successModal"
+      class="fixed inset-0 bg-navy/80 backdrop-blur-sm flex items-center justify-center z-50 modal-hidden transition-all duration-300"
+    >
+      <div
+        class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 text-center shadow-2xl relative overflow-hidden"
+      >
+        <div class="absolute top-0 left-0 w-full h-1 bg-gold"></div>
+        <div
+          class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6"
+        >
+          <i class="fa-solid fa-check text-3xl text-green-500"></i>
+        </div>
+        <h3 class="text-2xl font-serif font-bold mb-2">Cadastro Enviado!</h3>
+        <p class="text-gray-500 mb-8 text-sm">
+          Seus dados foram recebidos com sucesso. Nossa equipe entrará em
+          contato em breve pelo WhatsApp.
+        </p>
+        <button
+          id="closeModal"
+          class="bg-navy text-white w-full py-3 rounded-lg hover:bg-gold font-medium transition-colors"
+        >
+          Fechar
+        </button>
+      </div>
+    </div>
+
+    <footer
+      class="text-center p-6 text-xs text-gray-400 bg-white border-t border-gray-100"
+    >
+      <p>
+        &copy; 2026 Lucas Faustino Advocacia e Assessoria. Todos os direitos
+        reservados.
+      </p>
+    </footer>
+
+    <!-- Firebase Compat SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* ====== CONFIG DO FIREBASE (mesma dos dois arquivos) ====== */
+        const firebaseConfig = {
+          apiKey: "AIzaSyA-C1fhpSDs-mclzyCrfnhq17Y6Yol1P7I",
+          authDomain: "lucas-advogado.firebaseapp.com",
+          databaseURL: "https://lucas-advogado-default-rtdb.firebaseio.com",
+          projectId: "lucas-advogado",
+          storageBucket: "lucas-advogado.firebasestorage.app",
+          messagingSenderId: "921214898505",
+          appId: "1:921214898505:web:8669bda60e29f38e710a98",
+        };
+        /* ========================================================== */
+
+        const WHATSAPP = "558694622189";
+        const TIMEOUT_MS = 12000;
+
+        const form = document.getElementById("clientForm");
+        const modal = document.getElementById("successModal");
+        const erroBox = document.getElementById("erro");
+        const erroMsg = document.getElementById("erroMsg");
+        const wFallback = document.getElementById("whatsFallback");
+        const statusEl = document.getElementById("status");
+        const telInput = document.getElementById("telefone");
+        const btn = document.getElementById("btnEnviar");
+        const btnTexto = document.getElementById("btnTexto");
+
+        let db = null;
+        let pronto = false;
+        let enviando = false;
+
+        function setStatus(tipo, html) {
+          statusEl.className = "text-center text-xs mb-6 ";
+          statusEl.classList.add(
+            tipo === "ok"
+              ? "text-green-600"
+              : tipo === "err"
+                ? "text-red-600"
+                : "text-gray-400",
+          );
+          statusEl.innerHTML = html;
+        }
+
+        function comTimeout(promise, ms) {
+          return new Promise(function (resolve, reject) {
+            let finalizado = false;
+            const timer = setTimeout(function () {
+              if (!finalizado) {
+                finalizado = true;
+                reject(new Error("timeout"));
+              }
+            }, ms);
+            promise.then(
+              function (v) {
+                if (!finalizado) {
+                  finalizado = true;
+                  clearTimeout(timer);
+                  resolve(v);
+                }
+              },
+              function (e) {
+                if (!finalizado) {
+                  finalizado = true;
+                  clearTimeout(timer);
+                  reject(e);
+                }
+              },
+            );
+          });
+        }
+
+        /* ---------- Inicialização do Firebase ---------- */
+        try {
+          if (typeof firebase === "undefined")
+            throw new Error(
+              "SDK do Firebase não carregou. Verifique sua internet.",
+            );
+          if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+          db = firebase.firestore();
+          pronto = true;
+          setStatus(
+            "ok",
+            '<i class="fa-solid fa-circle text-[8px] mr-1"></i> Conectado ao servidor',
+          );
+          console.log("✅ Firebase inicializado:", firebaseConfig.projectId);
+        } catch (e) {
+          console.error("❌ Erro ao inicializar Firebase:", e);
+          pronto = false;
+          setStatus(
+            "err",
+            '<i class="fa-solid fa-triangle-exclamation mr-1"></i> ' +
+              e.message,
+          );
+        }
+
+        /* ---------- Máscara de telefone ---------- */
+        telInput.addEventListener("input", function (e) {
+          let v = e.target.value.replace(/\D/g, "").slice(0, 11);
+          if (v.length > 10)
+            v = "(" + v.slice(0, 2) + ") " + v.slice(2, 7) + "-" + v.slice(7);
+          else if (v.length > 6)
+            v = "(" + v.slice(0, 2) + ") " + v.slice(2, 6) + "-" + v.slice(6);
+          else if (v.length > 2) v = "(" + v.slice(0, 2) + ") " + v.slice(2);
+          else if (v.length > 0) v = "(" + v;
+          e.target.value = v;
+        });
+
+        /* ---------- Modal ---------- */
+        function toggleModal(show) {
+          modal.classList.toggle("modal-visible", show);
+          modal.classList.toggle("modal-hidden", !show);
+        }
+        document.getElementById("closeModal").onclick = function () {
+          toggleModal(false);
+        };
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) toggleModal(false);
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") toggleModal(false);
+        });
+
+        /* ---------- Link do WhatsApp ---------- */
+        function linkWhatsApp(dados) {
+          const texto =
+            "Olá! Acabei de preencher o formulário no site:\n\n" +
+            "*Nome:* " +
+            (dados.nome || "") +
+            "\n" +
+            "*Telefone:* " +
+            (dados.telefone || "") +
+            "\n" +
+            "*Endereço:* " +
+            (dados.endereco || "");
+          return (
+            "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto)
+          );
+        }
+
+        function mostrarErro(texto, dados) {
+          erroMsg.textContent = texto;
+          if (dados) {
+            wFallback.href = linkWhatsApp(dados);
+            wFallback.classList.remove("hidden");
+          } else {
+            wFallback.classList.add("hidden");
+          }
+          erroBox.classList.remove("hidden");
+          erroBox.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        function esconderErro() {
+          erroBox.classList.add("hidden");
+          wFallback.classList.add("hidden");
+        }
+
+        /* ---------- ENVIO ---------- */
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (enviando) return;
+          esconderErro();
+
+          const nome = document.getElementById("nome").value.trim();
+          const telefone = telInput.value.trim();
+          const endereco = document.getElementById("endereco").value.trim();
+
+          if (nome.length < 3)
+            return mostrarErro("Informe seu nome completo.", {
+              nome,
+              telefone,
+              endereco,
+            });
+          if (telefone.replace(/\D/g, "").length < 10)
+            return mostrarErro("Informe um telefone válido com DDD.", {
+              nome,
+              telefone,
+              endereco,
+            });
+          if (endereco.length < 5)
+            return mostrarErro("Informe seu endereço completo.", {
+              nome,
+              telefone,
+              endereco,
+            });
+
+          if (!pronto) {
+            return mostrarErro(
+              "Sem conexão com o servidor de cadastro. Clique no botão verde abaixo para enviar seus dados pelo WhatsApp:",
+              { nome, telefone, endereco },
+            );
+          }
+
+          enviando = true;
+          btn.disabled = true;
+          btnTexto.textContent = "Enviando...";
+
+          let sucesso = false;
+          let ultimoErro = "";
+
+          try {
+            await comTimeout(
+              db.collection("clientes").add({
+                nome: nome,
+                telefone: telefone,
+                endereco: endereco,
+                criadoEm: firebase.firestore.FieldValue.serverTimestamp(),
+              }),
+              TIMEOUT_MS,
+            );
+            sucesso = true;
+            console.log("✅ Salvo no Firestore");
+          } catch (err) {
+            console.error("❌ Firestore:", err.code || err.message);
+            ultimoErro = err.code || err.message;
+          }
+
+          enviando = false;
+          btn.disabled = false;
+          btnTexto.textContent = "Enviar Cadastro";
+
+          if (sucesso) {
+            form.reset();
+            toggleModal(true);
+            return;
+          }
+
+          /* Falhou → WhatsApp */
+          let dica = "Não foi possível enviar para o servidor agora.";
+          const c = String(ultimoErro).toLowerCase();
+          if (c.includes("timeout"))
+            dica = "O servidor demorou demais para responder.";
+          else if (
+            c.includes("permission-denied") ||
+            c.includes("permission_denied")
+          )
+            dica =
+              "As regras do Firebase estão bloqueando o envio. Libere a escrita na coleção 'clientes'.";
+          else if (c.includes("not-found") || c.includes("failed-precondition"))
+            dica = "O Firestore ainda não foi criado no console do Firebase.";
+          else if (c.includes("unavailable") || c.includes("network"))
+            dica = "Sem conexão com o servidor. Verifique sua internet.";
+
+          mostrarErro(
+            dica +
+              " Clique no botão verde abaixo para enviar seus dados pelo WhatsApp:" +
+              (ultimoErro ? " (Erro técnico: " + ultimoErro + ")" : ""),
+            { nome, telefone, endereco },
+          );
+        });
+      })();
+    </script>
+  </body>
+</html>
